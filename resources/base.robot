@@ -3,6 +3,8 @@ Library     AppiumLibrary
 
 Resource    Cadastro.resource
 Resource    Login.resource
+Resource    MenuPerfil.resource
+Resource    Menunotificações.resource
 
 *** Keywords ***
 Abrir app

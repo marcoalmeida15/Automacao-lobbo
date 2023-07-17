@@ -43,14 +43,8 @@ ${Click_voltar}                 //android.widget.Button[@content-desc="Voltar"]
 ${Tela_login}                   //android.view.View[@content-desc="Sou Tutor"]
 
 *** Keywords ***
-Dado que o usuário esteja na tela de login
-    Click Element                    accessibility_id=${Entrar_no_app}  
-     
-E na opção de Tutor
-    Wait Until Element Is Visible    xpath=${Opção_tutor}
-    Click Element                    xpath=${Opção_tutor}    
-
-Quando ele colocar as credenciais
+Dado que o usuário está dentro do app
+    Click Element                    accessibility_id=${Entrar_no_app}
     Wait Until Element Is Visible    xpath=${Campo_email_login}
     Click Element                    xpath=${Campo_email_login}
     Input Text                       xpath=${Campo_email_login}    ${Email_login_tutor}
@@ -59,62 +53,33 @@ Quando ele colocar as credenciais
     Click Element                    xpath=${Campo_senha}    
     Wait Until Keyword Succeeds    3x    10s    Wait Until Element Is Visible    xpath=${Campo_senha}
     Input Password                   xpath=${Campo_senha}    ${Senha}
-    Wait Until Element Is Visible    xpath=${Olho} 
-    Click Element                    xpath=${Olho} 
-
-E entrar no app
-    Click Element                    xpath=${Botão_entrar} 
-
-Então deve retornar uma frase de "Olá, " e seu nome
-    Wait Until Element Is Visible    xpath=${Nome_entrada}
-
-E na opção de Veterinario
-    Wait Until Element Is Visible    xpath=${Opção_veterinario}
-    Click Element                    xpath=${Opção_veterinario}
-
-Quando ele colocar o email e a senha
-    Wait Until Element Is Visible    xpath=${Campo_email_login}
-    Click Element                    xpath=${Campo_email_login}
-    Input Text                       xpath=${Campo_email_login}    ${Email_login_veterinario}    
     Click Element                    xpath=${Click_fora_do_campo_senha}
-    Wait Until Element Is Visible    xpath=${Campo_senha}
-    Click Element                    xpath=${Campo_senha}    
-    Input Password                   xpath=${Campo_senha}    ${Senha}
-    Wait Until Element Is Visible    xpath=${Olho} 
-    Click Element                    xpath=${Olho}
+    Click Element                    xpath=${Botão_entrar}
 
-# E fazer o logout        
-#     Wait Until Element Is Visible    xpath=//android.widget.Button
-#     Click Element                    xpath=//android.widget.Button
-# Então deve retornar para a página de login
+E ele entrar no menu perfil
+    Wait Until Element Is Visible    accessibility_id=Perfil
+    Click Element                    accessibility_id=Perfil
 
-E ele clicar no "Esqueceu sua senha?"
-    Wait Until Element Is Visible    xpath=${Esqueceu_sua_senha} 
-    Click Element                    xpath=${Esqueceu_sua_senha} 
+Quando ele clicar na imagem
+    Wait Until Keyword Succeeds    3x    10s    Wait Until Element Is Visible    xpath=//android.view.View[2]
+    Click Element                    xpath=//android.view.View[2]
 
-Quando enviar o email
-    Wait Until Element Is Visible    xpath=${Recuperar_email} 
-    Click Element                    xpath=${Recuperar_email} 
-    Input Text                       xpath=${Recuperar_email}     ${Email_login_tutor}
-    Click Element                    xpath=${Click_fora_do_campo}        
-    Click Element                    xpath=${Botão_enviar}
+Então deve ter as opções de câmera e galeria
+    Wait Until Element Is Visible    accessibility_id=Câmera
+    Wait Until Element Is Visible    accessibility_id=Galeria
 
-E clicar no "Reenviar"
-    Wait Until Element Is Visible    xpath=//android.view.View[@content-desc="Não recebeu o código? Reenviar"]
-    Click Element                    xpath=//android.view.View[@content-desc="Não recebeu o código? Reenviar"]
+Então ele clica na opção de câmera
+    Click Element                    accessibility_id=Câmera
+
+Então ele clica na opção de galeria
+    Click Element                    accessibility_id=Galeria    
+
+# Quando ele tirar o nome
     
-Quando ele clicar na frase "Não tenho cadastro? Clique e cadastre-se"
-    Wait Until Element Is Visible    xpath=${Nao_tenho_cadastro}
-    Click Element                    xpath=${Nao_tenho_cadastro}
 
-Então ele deve ser redirecionado para a tela de cadastro
-    Wait Until Element Is Visible    xpath=${Tela_cadastro} 
+# Então não deve ser possivel salvar
 
-E foi redirecionado para a tela de cadastro
-    Wait Until Element Is Visible    xpath=${Tela_cadastro} 
-    
-E clicar para voltar
-    Click Element                    xpath=${Click_voltar}
-
-Então deve ser redirecionado para a tela de login novamente
-   Wait Until Element Is Visible    xpath=${Tela_login}
+Quando ele clicar em "Alterar minha senha"
+    Swipe    792    1790    796    1002
+    Wait Until Element Is Visible    accessibility_id=Alterar minha senha
+    Click Element                    accessibility_id=Alterar minha senha
