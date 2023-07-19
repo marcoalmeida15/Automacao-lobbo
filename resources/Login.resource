@@ -77,8 +77,9 @@ Quando ele colocar o email e a senha
     Click Element                    xpath=${Campo_email_login}
     Input Text                       xpath=${Campo_email_login}    ${Email_login_veterinario}    
     Click Element                    xpath=${Click_fora_do_campo_senha}
-    Wait Until Element Is Visible    xpath=${Campo_senha}
+    Wait Until Keyword Succeeds    3x    10s    Wait Until Element Is Visible    xpath=${Campo_senha}
     Click Element                    xpath=${Campo_senha}    
+    Wait Until Keyword Succeeds    3x    10s    Wait Until Element Is Visible    xpath=${Campo_senha}
     Input Password                   xpath=${Campo_senha}    ${Senha}
     Wait Until Element Is Visible    xpath=${Olho} 
     Click Element                    xpath=${Olho}

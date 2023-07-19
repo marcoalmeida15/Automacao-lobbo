@@ -44,13 +44,14 @@ ${Tela_login}                   //android.view.View[@content-desc="Sou Tutor"]
 
 *** Keywords ***
 Quando ele entrar no menu notificações
-    Wait Until Element Is Visible    accessibility_id=Notificações
+    Wait Until Keyword Succeeds    3x    10s    Wait Until Element Is Visible    accessibility_id=Notificações
     Click Element                    accessibility_id=Notificações
 
 Então deve conter as notificações recebidas
     Wait Until Element Is Visible    xpath=//android.view.View[@content-desc="Notificações"]
 
 E flegar para ver somente as notificações pendentes de visualização
+    Wait Until Keyword Succeeds    3x    10s    Wait Until Element Is Visible    accessibility_id=Selecionar todas
     Click Element    accessibility_id=Selecionar todas
 
 Então deve conter somente as notificações pendentes de visualização

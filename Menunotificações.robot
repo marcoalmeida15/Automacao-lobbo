@@ -21,3 +21,4 @@ Cenário 03 - Visualizando apenas notificações pendentes de visualização
     Quando ele entrar no menu notificações
     E flegar para ver somente as notificações pendentes de visualização
     Então deve conter somente as notificações pendentes de visualização
+    
